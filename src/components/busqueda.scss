@@ -1,45 +1,43 @@
 .forms-container {
-    margin: auto;
-    text-align: center;
+	margin: auto;
+	text-align: center;
 }
 
 form {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px auto;
-    gap: 5px;
-    padding: 10px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px auto;
+	gap: 5px;
+	padding: 10px;
 }
 
-
 .datos-container {
-    padding:5px;
-    display: flex;
-    flex-direction: column;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
 }
 
 .datos-ul {
-    padding: 0px;
-    display: grid;
-    grid-template-columns: .7fr .7fr 4fr .5fr .5fr .6fr;
-    grid-template-rows: 1fr;
-    gap: 10px;
-    margin: 3px 0px;
+	padding: 0px;
+	display: grid;
+	grid-template-columns: 0.7fr 0.7fr 4fr 0.5fr 0.5fr 0.6fr;
+	grid-template-rows: 1fr;
+	gap: 10px;
+	margin: 3px 0px;
 }
-
 
 .datos-li {
-    background-color: #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    list-style: none;
-    text-align: center;
+	background-color: #ccc;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
+	list-style: none;
+	text-align: center;
 }
 .titulo {
-    background-color: rgb(67, 123, 228);
-    font-size: 1.3em;
-    font-family: sans-serif;
+	background-color: rgb(67, 123, 228);
+	font-size: 1.3em;
+	font-family: sans-serif;
 }
