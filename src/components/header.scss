@@ -1,25 +1,30 @@
+@use "./styles.scss" as *;
+
 .header {
-    background-color: green;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	background-image: linear-gradient(to right, $titulo-light, $titulo-dark);
+
+	z-index: 1000000000;
 }
 
-.header-nav {
-    padding: 10px;
+.forms-container {
+	width: 50%;
+	display: flex;
+	justify-content: space-between;
 }
 
-.header-ul {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 10px auto;
+	padding: 10px;
 }
 
-.header-li {
-    list-style: none;
-    padding: 5px;
-    background-color: #ccc;
-    border-radius: 10px;
-}
-
-.header-link {
-    text-decoration: none;
-    color: black;
+.forms-container {
+	margin: auto;
+	text-align: center;
 }

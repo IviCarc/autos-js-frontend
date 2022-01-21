@@ -4,6 +4,7 @@ import axios from "axios";
 import "./busqueda.scss";
 import Nuevo from "./nuevo";
 import mapFunc from "./functions/funcs";
+import Header from "./header";
 
 const Busqueda = (props) => {
 	const [cliente, setCliente] = useState("");
@@ -12,22 +13,16 @@ const Busqueda = (props) => {
 	const [error, setError] = useState(0);
 	const [errMsg, setErrMsg] = useState("");
 
-	const onChangeCliente = (e) => {
-		setCliente(e.target.value);
-	};
-	const onChangePatente = (e) => {
-		setPatente(e.target.value);
-	};
-
 	const send = async (e, valueSending) => {
 		e.preventDefault();
+		const value = e.target.value;
 		let url;
 		if (valueSending === 1) {
-			url = `http://localhost:5000/cliente/${cliente}`;
-			setErrMsg(`El cliente '${cliente}' no existe`);
+			url = `http://localhost:5000/cliente/${value}`;
+			setErrMsg(`El cliente '${value}' no existe`);
 		} else {
-			url = `http://localhost:5000/patente/${patente}`;
-			setErrMsg(`La patente '${patente}' no existe`);
+			url = `http://localhost:5000/patente/${value}`;
+			setErrMsg(`La patente '${value}' no existe`);
 		}
 		let res;
 		try {
@@ -48,38 +43,12 @@ const Busqueda = (props) => {
 
 	return (
 		<div className="cliente">
-			<header className="header">
-				<form action="">
-					<label htmlFor="cliente">Nombre del cliente:</label>
-					<input
-						onChange={onChangeCliente}
-						autoComplete="off"
-						list="clientes-datalist"
-						type="text"
-						name="cliente"
-					/>
-					<datalist id="clientes-datalist">
-						{props.listClientes &&
-							props.listClientes.map((obj, i) => <option key={i}>{obj}</option>)}
-					</datalist>
-					<button onClick={(e) => send(e, 1)}>Buscar</button>
-				</form>
-				<form action="">
-					<label htmlFor="cliente">Patente:</label>
-					<input
-						onChange={onChangeCliente}
-						autoComplete="off"
-						list="patentes-datalist"
-						type="text"
-						name="cliente"
-					/>
-					<datalist id="patentes-datalist">
-						{props.listPatentes &&
-							props.listPatentes.map((obj, i) => <option key={i}>{obj}</option>)}
-					</datalist>
-					<button onClick={(e) => send(e, 0)}>Buscar</button>
-				</form>
-			</header>
+			<Header
+				listClientes={props.listClientes}
+				listPatentes={props.listPatentes}
+				listAutos={props.listAutos}
+				send={send}
+			/>
 			<div className="datos-container">
 				<ul className="datos-ul titulos">
 					<li className="datos-li titulo">Cliente</li>
@@ -98,10 +67,9 @@ const Busqueda = (props) => {
 				></Nuevo>
 
 				{data && mapFunc(data)}
+				{error === 400 && <h2 style={{ color: "red", textAlign: "center" }}>{errMsg}</h2>}
+				{error === 503 && <h2 style={{ color: "red", textAlign: "center" }}>{errMsg}</h2>}
 			</div>
-
-			{error === 400 && <h2 style={{ color: "red", textAlign: "center" }}>{errMsg}</h2>}
-			{error === 503 && <h2 style={{ color: "red", textAlign: "center" }}>{errMsg}</h2>}
 		</div>
 	);
 };
