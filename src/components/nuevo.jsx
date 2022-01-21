@@ -46,112 +46,75 @@ const Nuevo = (props) => {
 
 	return (
 		<>
-			<ul className='datos-ul'>
-				<li className='datos-li'>
+			<ul className="datos-ul">
+				<li className="datos-li">
 					<input
-						autoComplete='off'
-						name='cliente'
-						list='cliente-datalist'
+						autoComplete="off"
+						name="cliente"
+						list="cliente-datalist"
 						onChange={onChange}
-						className='datos-input'
-						type='text'
+						className="datos-input"
+						type="text"
 					/>
-					<datalist id='cliente-datalist'>
-						{props.autocmpDataClients &&
-							props.autocmpDataClients.map((obj, i) => (
-								<option key={i}>{obj}</option>
-							))}
+					<datalist id="cliente-datalist">
+						{props.listClientes &&
+							props.listClientes.map((obj, i) => <option key={i}>{obj}</option>)}
 					</datalist>
 				</li>
-				<li className='datos-li'>
+				<li className="datos-li">
 					<input
-						autoComplete='off'
-						list='auto-datalist'
-						name='auto'
+						autoComplete="off"
+						list="auto-datalist"
+						name="auto"
 						onChange={onChange}
-						className='datos-input'
-						type='text'
+						className="datos-input"
+						type="text"
 					/>
-					<datalist id='auto-datalist'>
-						{props.autocmpDataAutos &&
-							props.autocmpDataAutos.map((obj, i) => <option key={i}>{obj}</option>)}
+					<datalist id="auto-datalist">
+						{props.listAutos && props.listAutos.map((obj, i) => <option key={i}>{obj}</option>)}
 					</datalist>
 				</li>
-				<li className='datos-li'>
-					<input name='trabajo' onChange={onChange} className='datos-input' type='text' />
+				<li className="datos-li">
+					<input name="trabajo" onChange={onChange} className="datos-input" type="text" />
 				</li>
-				<li className='datos-li'>
+				<li className="datos-li">
 					<input
-						autoComplete='off'
-						name='km'
+						autoComplete="off"
+						name="km"
 						onChange={onChange}
-						className='datos-input'
-						type='text'
+						className="datos-input"
+						type="text"
 					/>
 				</li>
-				<li className='datos-li'>
+				<li className="datos-li">
 					<input
-						autoComplete='off'
-						name='fecha'
+						autoComplete="off"
+						name="fecha"
 						onChange={onChange}
-						className='datos-input'
-						type='text'
+						className="datos-input"
+						type="text"
 					/>
 				</li>
-				<li className='datos-li'>
+				<li className="datos-li">
 					<input
-						autoComplete='off'
-						list='patente-datalist'
-						name='patente'
+						autoComplete="off"
+						list="patente-datalist"
+						name="patente"
 						onChange={onChange}
-						className='datos-input'
-						type='text'
+						className="datos-input"
+						type="text"
 					/>
-					<datalist id='patente-datalist'>
-						{props.autocmpDataPatentes &&
-							props.autocmpDataPatentes.map((obj, i) => (
-								<option key={i}>{obj}</option>
-							))}
+					<datalist id="patente-datalist">
+						{props.listPatentes &&
+							props.listPatentes.map((obj, i) => <option key={i}>{obj}</option>)}
 					</datalist>
 				</li>
 			</ul>
-			<button className='datos-btn send-btn' onClick={sendData}>
+			<button className="datos-btn send-btn" onClick={sendData}>
 				Cargar
 			</button>
 		</>
 	);
-
-	// return (
-	//     <div className='nuevo-container'>
-	//         <form action="" className='form-container'>
-	//             <div className="inputs-container">
-	//                 <label htmlFor="">Cliente</label>
-	//                 <input onChange={onChange} name='cliente' type="text" autoComplete='off'/>
-	//             </div>
-	//             <div className="inputs-container">
-	//                 <label htmlFor="">Auto</label>
-	//                 <input onChange={onChange} name='auto' type="text" autoComplete='off'/>
-	//             </div>
-	//             <div className="inputs-container">
-	//                 <label htmlFor="">Trabajo</label>
-	//                 <textarea onChange={onChange} name="trabajo" id="trabajo" ></textarea>
-	//             </div>
-	//             <div className="inputs-container">
-	//                 <label htmlFor="">Km</label>
-	//                 <input onChange={onChange} name='km' type="number" autoComplete='off'/>
-	//             </div>
-	//             <div className="inputs-container">
-	//                 <label htmlFor="">Fecha</label>
-	//                 <input onChange={onChange} name='fecha' type="date" autoComplete='off'/>
-	//             </div>
-	//             <div className="inputs-container">
-	//                 <label htmlFor="">Patente</label>
-	//                 <input onChange={onChange} name='patente' type="text" autoComplete='off'/>
-	//             </div>
-	//             <button className='send-btn' onClick={sendData}>Cargar</button>
-	//         </form>
-	//     </div>
-	// )
 };
 
 export default Nuevo;

@@ -5,43 +5,30 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const App = () => {
-	const [autocmpDataClients, setAutocmpDataClients] = useState(false);
-	const [autocmpDataPatentes, setAutocmpDataPatentes] = useState(false);
-	const [autocmpDataAutos, setAutocmpDataAutos] = useState(false);
+	const [listClientes, setListClientes] = useState(false);
+	const [listPatentes, setListPatentes] = useState(false);
+	const [listAutos, setListAutos] = useState(false);
 
 	const getAll = async () => {
 		try {
-			const res = await (await axios.get(`http://localhost:5000/lista/clientes`)).data;
-			setAutocmpDataClients(res);
+			const { clientes, autos, patentes } = await (await axios.get("http://localhost:5000/lista")).data;
+			setListAutos(autos);
+			setListClientes(clientes);
+			setListPatentes(patentes);
 		} catch (e) {
-			setAutocmpDataClients(false);
 			console.log(e);
-		}
-		try {
-			const res = await (await axios.get(`http://localhost:5000/lista/patentes`)).data;
-			setAutocmpDataPatentes(res);
-		} catch (e) {
-			setAutocmpDataPatentes(false);
-			console.log(e);
-		}
-
-		try {
-			const res = await (await axios.get(`http://localhost:5000/lista/autos`)).data;
-			setAutocmpDataAutos(res);
-		} catch (e) {
-			setAutocmpDataAutos(false);
-			console.log(e);
+			return;
 		}
 	};
 
 	useEffect(getAll, []);
 	return (
-		<div className='App'>
+		<div className="App">
 			<Header></Header>
 			<Busqueda
-				autocmpDataClients={autocmpDataClients}
-				autocmpDataPatentes={autocmpDataPatentes}
-				autocmpDataAutos={autocmpDataAutos}
+				listClientes={listClientes}
+				listPatentes={listPatentes}
+				listAutos={listAutos}
 			></Busqueda>
 		</div>
 	);

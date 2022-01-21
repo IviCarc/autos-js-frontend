@@ -11,27 +11,6 @@ const Busqueda = (props) => {
 	const [data, setData] = useState(false);
 	const [error, setError] = useState(false);
 	const [errMsg, setErrMsg] = useState("");
-	// const [autocmpDataClients, setAutocmpDataClients] = useState(false);
-	// const [autocmpDataPatentes, setAutocmpDataPatentes] = useState(false);
-
-	// const getAll = async () => {
-	// 	try {
-	// 		const res = await (await axios.get(`http://localhost:5000/lista/clientes`)).data;
-	// 		setAutocmpDataClients(res);
-	// 	} catch (e) {
-	// 		setAutocmpDataClients(false);
-	// 		console.log(e);
-	// 	}
-	// 	try {
-	// 		const res = await (await axios.get(`http://localhost:5000/lista/patentes`)).data;
-	// 		setAutocmpDataPatentes(res);
-	// 	} catch (e) {
-	// 		setAutocmpDataPatentes(false);
-	// 		console.log(e);
-	// 	}
-	// };
-
-	// useEffect(getAll, []);
 
 	const onChangeCliente = (e) => {
 		setCliente(e.target.value);
@@ -63,58 +42,54 @@ const Busqueda = (props) => {
 	};
 
 	return (
-		<div className='cliente'>
-			<div className='forms-container'>
-				<form action=''>
-					<label htmlFor='cliente'>Nombre del cliente:</label>
+		<div className="cliente">
+			<div className="forms-container">
+				<form action="">
+					<label htmlFor="cliente">Nombre del cliente:</label>
 					<input
-						autoComplete='off'
-						list='clientes-datalist'
+						autoComplete="off"
+						list="clientes-datalist"
 						onChange={onChangeCliente}
-						type='text'
-						name='cliente'
+						type="text"
+						name="cliente"
 					/>
-					<datalist id='clientes-datalist'>
-						{props.autocmpDataClients &&
-							props.autocmpDataClients.map((obj, i) => (
-								<option key={i}>{obj}</option>
-							))}
+					<datalist id="clientes-datalist">
+						{props.listClientes &&
+							props.listClientes.map((obj, i) => <option key={i}>{obj}</option>)}
 					</datalist>
 					<button onClick={(e) => send(e, 1)}>Buscar</button>
 				</form>
-				<form action=''>
-					<label htmlFor='cliente'>Patente:</label>
+				<form action="">
+					<label htmlFor="cliente">Patente:</label>
 					<input
 						onChange={onChangePatente}
-						autoComplete='off'
-						list='patentes-datalist'
-						type='text'
-						name='cliente'
+						autoComplete="off"
+						list="patentes-datalist"
+						type="text"
+						name="cliente"
 					/>
-					<datalist id='patentes-datalist'>
-						{props.autocmpDataPatentes &&
-							props.autocmpDataPatentes.map((obj, i) => (
-								<option key={i}>{obj}</option>
-							))}
+					<datalist id="patentes-datalist">
+						{props.listPatentes &&
+							props.listPatentes.map((obj, i) => <option key={i}>{obj}</option>)}
 					</datalist>
 					<button onClick={(e) => send(e, 0)}>Buscar</button>
 				</form>
 			</div>
-			<div className='datos-container'>
-				<ul className='datos-ul titulos'>
-					<li className='datos-li titulo'>Cliente</li>
-					<li className='datos-li titulo'>Auto</li>
-					<li className='datos-li titulo' id='trabajo'>
+			<div className="datos-container">
+				<ul className="datos-ul titulos">
+					<li className="datos-li titulo">Cliente</li>
+					<li className="datos-li titulo">Auto</li>
+					<li className="datos-li titulo" id="trabajo">
 						Trabajo
 					</li>
-					<li className='datos-li titulo'>Km</li>
-					<li className='datos-li titulo'>Fecha</li>
-					<li className='datos-li titulo'>Patente</li>
+					<li className="datos-li titulo">Km</li>
+					<li className="datos-li titulo">Fecha</li>
+					<li className="datos-li titulo">Patente</li>
 				</ul>
 				<Nuevo
-					autocmpDataClients={props.autocmpDataClients}
-					autocmpDataPatentes={props.autocmpDataPatentes}
-					autocmpDataAutos={props.autocmpDataAutos}
+					listClientes={props.listClientes}
+					listPatentes={props.listPatentes}
+					listAutos={props.listAutos}
 				></Nuevo>
 
 				{data && mapFunc(data)}
