@@ -16,28 +16,45 @@ form {
 	padding: 5px;
 	display: flex;
 	flex-direction: column;
+	margin: 5px;
+	box-shadow: 0px 2px 5px 0px;
 }
 
 .datos-ul {
 	padding: 0px;
 	display: grid;
-	grid-template-columns: 0.7fr 0.7fr 4fr 0.5fr 0.5fr 0.6fr;
+	grid-template-columns: 0.7fr 0.7fr 3fr 0.5fr 0.6fr 0.6fr;
 	grid-template-rows: 1fr;
 	gap: 10px;
 	margin: 3px 0px;
 }
 
 .datos-li {
-	background-color: #ccc;
+	background-color: rgb(240, 240, 240);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding: 5px;
 	list-style: none;
 	text-align: center;
+	box-shadow: 0px 0px 2px 0px;
 }
+
+.datos-li input {
+	border-radius: 5px;
+	border: none;
+}
+
+// .datos-li input:focus-visible {
+// 	// border: none;
+// 	// box-shadow: 0px 0px 5px 0px;
+// 	// outline: none;
+// }
+
 .titulo {
 	background-color: rgb(67, 123, 228);
 	font-size: 1.3em;
 	font-family: sans-serif;
+	color: white;
+	font-weight: 500;
 }

@@ -1,16 +1,10 @@
 import "./header.scss";
+import * as React from "react";
+import { useState } from "react";
+import axios from "axios";
 
-function Header() {
-	// UTILIZAR ESTE COMOPONENTE PARA ALMACENAR LOS DATOS, DE ESTA MANERA SE PASARAN COMO PROPS
-	// Y ESTARÁN DISPONIBLES EN TODOS LOS COMPONENTES
-
-	return (
-		<header className='header'>
-			<nav className='header-nav'>
-				<ul className='header-ul'></ul>
-			</nav>
-		</header>
-	);
+function Header(props) {
+	return <div></div>;
 }
 
 export default Header;

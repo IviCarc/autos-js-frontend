@@ -1,15 +1,15 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import * as React from "react";
+import { useState } from "react";
 import axios from "axios";
 import "./busqueda.scss";
-import Nuevo from "./nuevo.tsx";
+import Nuevo from "./nuevo";
 import mapFunc from "./functions/funcs";
 
 const Busqueda = (props) => {
 	const [cliente, setCliente] = useState("");
 	const [patente, setPatente] = useState("");
 	const [data, setData] = useState(false);
-	const [error, setError] = useState(false);
+	const [error, setError] = useState(0);
 	const [errMsg, setErrMsg] = useState("");
 
 	const onChangeCliente = (e) => {
@@ -34,22 +34,27 @@ const Busqueda = (props) => {
 			res = await (await axios.get(url)).data;
 		} catch (e) {
 			setData(false);
-			setError(e.response.status);
+			try {
+				setError(e.response.status);
+			} catch (e) {
+				setError(503);
+				setErrMsg(`El servidor no se encuentra disponible`);
+			}
 			return;
 		}
 		setData(res);
-		setError(false);
+		setError(0);
 	};
 
 	return (
 		<div className="cliente">
-			<div className="forms-container">
+			<header className="header">
 				<form action="">
 					<label htmlFor="cliente">Nombre del cliente:</label>
 					<input
+						onChange={onChangeCliente}
 						autoComplete="off"
 						list="clientes-datalist"
-						onChange={onChangeCliente}
 						type="text"
 						name="cliente"
 					/>
@@ -62,7 +67,7 @@ const Busqueda = (props) => {
 				<form action="">
 					<label htmlFor="cliente">Patente:</label>
 					<input
-						onChange={onChangePatente}
+						onChange={onChangeCliente}
 						autoComplete="off"
 						list="patentes-datalist"
 						type="text"
@@ -74,7 +79,7 @@ const Busqueda = (props) => {
 					</datalist>
 					<button onClick={(e) => send(e, 0)}>Buscar</button>
 				</form>
-			</div>
+			</header>
 			<div className="datos-container">
 				<ul className="datos-ul titulos">
 					<li className="datos-li titulo">Cliente</li>
@@ -96,6 +101,7 @@ const Busqueda = (props) => {
 			</div>
 
 			{error === 400 && <h2 style={{ color: "red", textAlign: "center" }}>{errMsg}</h2>}
+			{error === 503 && <h2 style={{ color: "red", textAlign: "center" }}>{errMsg}</h2>}
 		</div>
 	);
 };

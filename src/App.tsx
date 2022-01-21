@@ -1,6 +1,6 @@
-import React from "react";
-import Busqueda from "./components/busqueda.tsx";
-import Header from "./components/header.tsx";
+import * as React from "react";
+import Busqueda from "./components/busqueda";
+import Header from "./components/header";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -21,10 +21,13 @@ const App = () => {
 		}
 	};
 
-	useEffect(getAll, []);
+	useEffect(() => {
+		getAll();
+		return undefined;
+	}, []);
 	return (
 		<div className="App">
-			<Header></Header>
+			{/* <Header listClientes={listClientes} listPatentes={listPatentes}></Header> */}
 			<Busqueda
 				listClientes={listClientes}
 				listPatentes={listPatentes}
