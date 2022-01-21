@@ -1,6 +1,6 @@
 import React from "react";
-import Busqueda from "./components/busqueda";
-import Header from "./components/header.jsx";
+import Busqueda from "./components/busqueda.tsx";
+import Header from "./components/header.tsx";
 import { useEffect, useState } from "react";
 import axios from "axios";
 

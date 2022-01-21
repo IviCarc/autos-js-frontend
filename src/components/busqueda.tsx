@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./busqueda.scss";
-import Nuevo from "./nuevo.jsx";
+import Nuevo from "./nuevo.tsx";
 import mapFunc from "./functions/funcs";
 
 const Busqueda = (props) => {
